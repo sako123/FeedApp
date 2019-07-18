@@ -37,6 +37,7 @@ export class FeedItemComponent implements OnInit, OnDestroy {
           this.snackBar.open('Feed je zmazany', 'Mazanie', {
           duration: 2000,
         });
+        // event preposiela stav do FeedListComponent
         this.delFeedEvent.emit(true);
       });
     }

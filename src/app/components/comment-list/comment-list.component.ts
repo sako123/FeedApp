@@ -11,7 +11,7 @@ export class CommentListComponent implements OnInit {
   @Input() listComments: CommentModule[];
   @Input() feedId: Number;
   @Output() refreshCommentEvent: EventEmitter<boolean> = new EventEmitter();
-  // addCommentActive: Boolean = false;
+
   newComment: CommentModule = new CommentModule();
   constructor(private commentService: CommentService) {}
 
@@ -19,7 +19,6 @@ export class CommentListComponent implements OnInit {
 
   activeNew() {
     this.newComment = new CommentModule();
-   // this.addCommentActive = !this.addCommentActive;
   }
 
   loadComments() {
@@ -28,13 +27,12 @@ export class CommentListComponent implements OnInit {
   }
 
   addNewComment(data: CommentModule) {
-    // tslint:disable-next-line:no-shadowed-variable
     this.commentService
       .addComment(this.feedId, this.newComment)
       .subscribe((data: CommentModule) => {
         this.activeNew();
         console.log(data);
-        // this.addCommentActive = false;
+        // refresh event pre parent (FeedEditItemComponent)
         this.refreshCommentEvent.emit(true);
       });
   }

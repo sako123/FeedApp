@@ -1,0 +1,23 @@
+<div class="flex-row">
+  <div class="flex-row comment-header">
+    <div   class="row">
+      <div class="col-2"><label class="header-label">Name</label></div>
+      <div class="col-3"><input class="input-width-200" tabindex="1" [(ngModel)]="newComment.name"/></div>
+    </div>
+    <div class="row" >
+      <div class="col-2"><label class="header-label">Text</label></div>
+      <div class="col-9"><textarea class="textarea-custom" tabindex="2" [(ngModel)]="newComment.text" cols="50" rows="4"></textarea></div>
+    </div>
+    <div class="flex-row">
+      <button tabindex="3" class="button-center width_200;" (click)="addNewComment(newComment)" mat-raised-button
+        color="primary">Add Comment</button>
+    </div>
+  </div>
+
+  <div *ngIf="listComments" class="flex-row">
+    <div class="flex-column" *ngFor="let commentItem of listComments">
+      <app-comment-item (delCommentEvent)="loadComments()" [currentComment]="commentItem">
+      </app-comment-item>
+    </div>
+  </div>
+</div>

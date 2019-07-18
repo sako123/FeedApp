@@ -1,0 +1,45 @@
+{
+  "feeds": [
+    {
+      "id": 1,
+      "timestamp": 1521805624900,
+      "name": "Vysoce kritická zranitelnost v Drupalu 7 a 8",
+      "text": "CSIRT.CZ upozorňuje na vysoce kritickou zranitelnost v Drupalu 7 a 8 (DRUPAL-PSA-2018-001). Bezpečnostní záplaty budou uvolněny ve středu 28. března v čase mezi 18:00 a 19:30 UTC. ",
+      "likes": 5,
+      "comments": [
+        {
+          "id": 1,
+          "timestamp": 1521806104900,
+          "name": "Jožko",
+          "text": "Tak toto je ozaj vážna vec..."
+        },
+        {
+          "id": 2,
+          "timestamp": 1521811084900,
+          "name": "Peter",
+          "text": "Ako sa na to prišlo ?"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "timestamp": 1521816065140,
+      "name": "Opera 52",
+      "text": "Opera 52, verze 52.0.2871.30, byla prohlášena za stabilní. Z novinek vývojáři upozorňují na vylepšené blokování reklam, možnost kopírování více adres stránek najednou nebo nové animace zobrazované v případě síťových problémů. Opera 52 je postavena na Chromiu 65. Podrobný přehled v seznamu změn. ",
+      "likes": 1,
+      "comments": []
+    },
+    {
+      "name": "Jozef",
+      "text": "Hosteter",
+      "timestamp": 1562586652350,
+      "id": 3
+    },
+    {
+      "name": "Janosik",
+      "text": "z terchovi",
+      "timestamp": 1562586698588,
+      "id": 4
+    }
+  ]
+}

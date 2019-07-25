@@ -1,23 +1,27 @@
-<div  class="d-flex flex-column">
+<div class="d-flex flex-column">
   <div>
-    <mat-card class="feed-card header">
-      <div class="row">
-        <div class="col-2"><label class="header-label">Meno</label></div>
-        <div class="col-3"><input class="input-width-200" tabindex="1" *ngIf="newFeed" [(ngModel)]="newFeed.name" /></div>
+    <mat-card class="feed-card header" >
+      <div class="row max-flex-column">
+        <mat-form-field appearance="outline" >
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="newFeed.name">
+        </mat-form-field>
       </div>
       <mat-card-content>
-          <div class="row">
-            <div class="col-2"><label class="header-label">Text</label></div>
-            <div class="col-9"><textarea class="textarea-custom" tabindex="2" *ngIf="newFeed" [(ngModel)]="newFeed.text" cols="50"
-                rows="4"></textarea></div>
-          </div>
+        <div class="row max-flex-column">
+          <mat-form-field appearance="outline">
+            <mat-label>Text</mat-label>
+            <textarea matInput [(ngModel)]="newFeed.text" style="height:80px;"></textarea>
+          </mat-form-field>
+        </div>
       </mat-card-content>
-      <mat-card-actions >
-        <button tabindex="3" class="button-center" (click)="addNewFeed(newFeed)" mat-raised-button color="primary"  matTooltip="Add new feed" >Add feed</button>
+      <mat-card-actions>
+        <button tabindex="3" class="button-center" (click)="addNewFeed(newFeed)" mat-raised-button color="primary"
+          matTooltip="Add new feed">Add feed</button>
       </mat-card-actions>
     </mat-card>
   </div>
-  <div  class="d-flex flex-column" *ngFor="let item of listFeeds">
+  <div class="d-flex flex-column" *ngFor="let item of listFeeds">
     <app-feed-item (delFeedEvent)="loadFeeds()" [currentFeed]="item"></app-feed-item>
   </div>
 </div>

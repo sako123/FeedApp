@@ -1,5 +1,5 @@
 import { FeedService } from './../../services/feed-service';
-import { FeedModule } from './../../module/feed/feed.module';
+import { FeedModel } from './../../models/feed/feed.module';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location} from '@angular/common';
@@ -13,15 +13,14 @@ import { map, filter, switchMap, switchMapTo, mergeMap, tap } from 'rxjs/operato
   providers: [FeedService]
 })
 export class FeedEditItemComponent implements OnInit {
-
   feedId: number;
-  currentFeed: FeedModule;
+  currentFeed: FeedModel;
 
-
-  constructor( private activeRoute: ActivatedRoute,
-                private feedService: FeedService,
-                private location: Location
-    ) { }
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private feedService: FeedService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
     console.log('ngOnInit');
@@ -36,16 +35,24 @@ export class FeedEditItemComponent implements OnInit {
 
   loadData(feedId: number) {
     console.log('start loadData id: ' + feedId);
-    this.feedService.getFeedinfo(feedId)
-    .pipe(mergeMap(feed => this.feedService.getCommentCount(feedId).pipe(tap(count => {
-         feed.commentCount = count; this.currentFeed = feed;
-          console.log('current feed ' + feed);
-        }))),
-      ).subscribe();
-    }
+    this.feedService
+      .getFeedinfo(feedId)
+      .pipe(
+        mergeMap(feed =>
+          this.feedService.getCommentCount(feedId).pipe(
+            tap(count => {
+              feed.commentCount = count;
+              this.currentFeed = feed;
+              console.log('current feed ' + feed);
+            })
+          )
+        )
+      )
+      .subscribe();
+  }
 
   goBack() {
-      this.location.back();
+    this.location.back();
   }
 
   incLike() {

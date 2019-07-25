@@ -1,4 +1,4 @@
-import { FeedModule } from '../module/feed/feed.module';
+import { FeedModel } from '../models/feed/feed.module';
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,6 @@ import { map, filter, switchMap, switchMapTo, catchError } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class FeedService {
-
   url = environment.baseServerApiUrl;
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,54 +18,50 @@ export class FeedService {
     })
   };
 
-  constructor(
-    private http: HttpClient
-    ) { }
+  constructor(private http: HttpClient) {}
 
-  getFeeds(): Observable<FeedModule[]> {
-    return this
-      .http
-      .get<FeedModule[]>(`${this.url}/feeds`).pipe(catchError(err => this.handleError(err)));
+  getFeeds(): Observable<FeedModel[]> {
+    return this.http
+      .get<FeedModel[]>(`${this.url}/feeds`)
+      .pipe(catchError(err => this.handleError(err)));
   }
 
-  getFeedinfo(FeedId: number): Observable<FeedModule>  {
-    return this
-      .http
-      .get<FeedModule>(`${this.url}/feed/${FeedId}`).pipe(catchError(err => this.handleError(err)));
-    }
+  getFeedinfo(FeedId: number): Observable<FeedModel> {
+    return this.http
+      .get<FeedModel>(`${this.url}/feed/${FeedId}`)
+      .pipe(catchError(err => this.handleError(err)));
+  }
 
   getLikeCount(FeedId: any): Observable<number> {
-    return this
-      .http
-      .get<number>(`${this.url}/feed/${FeedId}/like/count`).pipe(catchError(err => this.handleError(err)));
+    return this.http
+      .get<number>(`${this.url}/feed/${FeedId}/like/count`)
+      .pipe(catchError(err => this.handleError(err)));
   }
   getCommentCount(FeedId: any): Observable<number> {
-    return this
-      .http
-      .get<number>(`${this.url}/feed/${FeedId}/comment/count`).pipe(catchError(err => this.handleError(err)));
+    return this.http
+      .get<number>(`${this.url}/feed/${FeedId}/comment/count`)
+      .pipe(catchError(err => this.handleError(err)));
   }
 
   deleteFeedinfo(FeedId: number) {
-    return this
-      .http
-      .delete(`${this.url}/feed/${FeedId}`).pipe(catchError(err => this.handleError(err)));
+    return this.http
+      .delete(`${this.url}/feed/${FeedId}`)
+      .pipe(catchError(err => this.handleError(err)));
   }
 
-  updateFeed(FeedId: number, data: FeedModule) {
-    return this
-      .http
-      .put(`${this.url}/feed/${FeedId}`, data, this.httpOptions).pipe(catchError(err => this.handleError(err)));
+  updateFeed(FeedId: number, data: FeedModel) {
+    return this.http
+      .put(`${this.url}/feed/${FeedId}`, data, this.httpOptions)
+      .pipe(catchError(err => this.handleError(err)));
   }
 
-  addFeed(data: FeedModule) {
+  addFeed(data: FeedModel) {
     data.timestamp = new Date().getTime();
-    return this
-      .http
-      .put<FeedModule>(`${this.url}/feed`, data, this.httpOptions);
+    return this.http.put<FeedModel>(`${this.url}/feed`, data, this.httpOptions);
   }
 
   handleError(err: any) {
-    console.log(err); return throwError(err);
+    console.log(err);
+    return throwError(err);
   }
-
 }

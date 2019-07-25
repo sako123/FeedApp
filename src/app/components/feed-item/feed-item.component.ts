@@ -1,8 +1,7 @@
 import { SharedMaterialModule } from './../../Shared-Material/shared-material.module';
 import { FeedService } from './../../services/feed-service';
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { FeedModule } from 'src/app/module/feed/feed.module';
-import { InfoDialogComponent } from 'src/app/Utils/info-dialog/info-dialog.component';
+import { FeedModel } from './../../models/feed/feed.module';
 import { MatSnackBar } from '@angular/material';
 
 
@@ -11,14 +10,11 @@ import { MatSnackBar } from '@angular/material';
   selector: 'app-feed-item',
   templateUrl: './feed-item.component.html',
   styleUrls: ['./feed-item.component.css'],
-  providers: [FeedService, SharedMaterialModule],
-  entryComponents: [
-    InfoDialogComponent,
-  ]
+  providers: [],
 })
 export class FeedItemComponent implements OnInit, OnDestroy {
 
-  @Input() currentFeed: FeedModule;
+  @Input() currentFeed: FeedModel;
   @Output() delFeedEvent: EventEmitter<boolean> = new EventEmitter();
   countCommponents: Number;
 

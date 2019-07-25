@@ -5,12 +5,10 @@
   </mat-card-header>
   <mat-card-content class="map-content-wrap">
    <span class="span-custon">{{currentComment.text}}</span>
-  </mat-card-content>
-  <mat-card-footer>
-    <button class="button-center" (click)="deleteComment()" mat-raised-button color="warn">
-      <mat-icon>delete</mat-icon>
+    <button class="button-right" (click)="deleteComment()" mat-mini-fab color="warn">
+      <mat-icon >delete</mat-icon>
     </button>
-  </mat-card-footer>
+  </mat-card-content>
   <!-- identifikator je neviditelny-->
   <div class="row" class="invisible">
     <a>{{currentComment.id}}</a>

@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { SharedMaterialModule } from './Shared-Material/shared-material.module';
 import { InfoDialogComponent } from './Utils/info-dialog/info-dialog.component';
 import bootstrap from 'bootstrap';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import bootstrap from 'bootstrap';
     CommentListComponent,
     CommentItemComponent,
     FeedEditItemComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,14 @@ import bootstrap from 'bootstrap';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

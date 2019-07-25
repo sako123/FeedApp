@@ -1,6 +1,6 @@
 <div  class="d-flex flex-column">
   <div>
-    <mat-card class="feed-card">
+    <mat-card class="feed-card header">
       <div class="row">
         <div class="col-2"><label class="header-label">Meno</label></div>
         <div class="col-3"><input class="input-width-200" tabindex="1" *ngIf="newFeed" [(ngModel)]="newFeed.name" /></div>
@@ -13,7 +13,7 @@
           </div>
       </mat-card-content>
       <mat-card-actions >
-        <button tabindex="3" class="button-center" (click)="addNewFeed(newFeed)" mat-raised-button color="primary" >Add feed</button>
+        <button tabindex="3" class="button-center" (click)="addNewFeed(newFeed)" mat-raised-button color="primary"  matTooltip="Add new feed" >Add feed</button>
       </mat-card-actions>
     </mat-card>
   </div>

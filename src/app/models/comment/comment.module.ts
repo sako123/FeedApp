@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 
-export class CommentModule {
+export class CommentModel {
   id: number;
   name: string;
   text: string;

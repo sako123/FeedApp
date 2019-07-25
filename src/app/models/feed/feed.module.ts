@@ -1,4 +1,4 @@
-import { CommentModule } from './../comment/comment.module';
+import { CommentModel } from './../comment/comment.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,12 +8,12 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class FeedModule {
+export class FeedModel {
   id: number;
   name: string = '';
   text: string = '';
   likes: number = 0;
   timestamp: number;
   commentCount: number = 0;
-  comments: CommentModule[] = [];
+  comments: CommentModel[] = [];
  }

@@ -7,21 +7,21 @@
     <span class="span-custon">{{currentFeed.text}}</span>
   </mat-card-content>
   <mat-card-actions>
-    <button [routerLink]="['/feeds', currentFeed.id ]" mat-raised-button color="primary">
+    <button [routerLink]="['/feeds', currentFeed.id ]" mat-raised-button color="primary" matTooltip="Show detail feed">
       <mat-icon>assignment</mat-icon>
     </button>
-    <button (click)="deleteFeed(currentFeed.id)" mat-raised-button color="warn">
+    <button (click)="deleteFeed(currentFeed.id)" mat-raised-button color="warn"  matTooltip="Delete feed">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
   <mat-card-footer>
       <div class="row">
         <div class="col-5 col_margin_10">
-          <mat-icon >thumb_up</mat-icon><span>{{currentFeed.likes}}</span>
+          <mat-icon color="primary" >thumb_up</mat-icon><span>{{currentFeed.likes}}</span>
         </div>
         <div class="col"></div>
         <div class="col-2">
-          <mat-icon>assignment</mat-icon>{{currentFeed.comments?currentFeed.comments.length:0}}
+          <mat-icon  color="primary" >assignment</mat-icon>{{currentFeed.comments?currentFeed.comments.length:0}}
         </div>
       </div>
   </mat-card-footer>

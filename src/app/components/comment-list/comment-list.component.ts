@@ -1,35 +1,35 @@
 import { CommentService } from './../../services/comment.service';
-import { CommentModule } from './../../module/comment/comment.module';
+import { CommentModel } from './../../models/comment/comment.module';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-comment-list',
-  templateUrl: './comment-list.component.html',
-  styleUrls: ['./comment-list.component.css']
+  selector: "app-comment-list",
+  templateUrl: "./comment-list.component.html",
+  styleUrls: ["./comment-list.component.css"]
 })
 export class CommentListComponent implements OnInit {
-  @Input() listComments: CommentModule[];
+  @Input() listComments: CommentModel[];
   @Input() feedId: Number;
   @Output() refreshCommentEvent: EventEmitter<boolean> = new EventEmitter();
 
-  newComment: CommentModule = new CommentModule();
+  newComment: CommentModel = new CommentModel();
   constructor(private commentService: CommentService) {}
 
   ngOnInit() {}
 
   activeNew() {
-    this.newComment = new CommentModule();
+    this.newComment = new CommentModel();
   }
 
   loadComments() {
-    console.log('refresh list of comments');
+    console.log("refresh list of comments");
     this.refreshCommentEvent.emit(true);
   }
 
-  addNewComment(data: CommentModule) {
+  addNewComment(data: CommentModel) {
     this.commentService
       .addComment(this.feedId, this.newComment)
-      .subscribe((data: CommentModule) => {
+      .subscribe((data: CommentModel) => {
         this.activeNew();
         console.log(data);
         // refresh event pre parent (FeedEditItemComponent)

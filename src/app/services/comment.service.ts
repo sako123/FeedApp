@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { CommentModule } from '../module/comment/comment.module';
+import { CommentModel } from '../models/comment/comment.module';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -17,13 +17,7 @@ export class CommentService {
   };
   constructor(private http: HttpClient) { }
 
-  /*getComments(feedId: Number): Observable<CommentModule[]> {
-    return this
-      .http
-      .get<CommentModule[]>(`${this.url}/feed/${feedId}/comments`);
-  }*/
-
-  addComment(feedId: Number, data: CommentModule) {
+  addComment(feedId: Number, data: CommentModel) {
     data.timestamp = new Date().getTime();
     return this
       .http
